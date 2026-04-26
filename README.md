@@ -17,3 +17,38 @@
 - ✅ **Поддержка inline-кнопок** – удобное переключение моделей.
 
 ## 🧱 Как это работает
+
+- **Yandex Cloud Function** – бессерверная обработка входящих сообщений.
+- **API Gateway** – принимает вебхуки от Telegram и перенаправляет в функцию.
+- **Knowledge base** – вшитые знания о линейках Daichi, технические таблицы.
+- **Conversation manager** – хранит историю диалога in-memory (можно заменить на YDB/Redis).
+- **AI Router** – маршрутизирует запросы к выбранной LLM.
+
+## 📋 Требования
+
+- Аккаунт в [Yandex Cloud](https://console.cloud.yandex.ru) (активирован, есть платёжный аккаунт – подойдёт грант «Старт»).
+- Установленный [YC CLI](https://cloud.yandex.ru/docs/cli/quickstart).
+- Telegram-бот, зарегистрированный у [@BotFather](https://t.me/BotFather).
+- API-ключ [DeepSeek](https://platform.deepseek.com/) (или IAM-токен для YandexGPT).
+- Базовое знание командной строки.
+
+## 🔑 Получение необходимых ключей
+
+### 1. Токен Telegram-бота
+- Напишите [@BotFather](https://t.me/BotFather)
+- Отправьте `/newbot`
+- Укажите имя: `Ваш Консул` и username (например, `VashKonsulBot`)
+- Скопируйте полученный **токен** (выглядит как `1234567890:AAG...`)
+
+### 2. API-ключ DeepSeek
+- Зарегистрируйтесь на [platform.deepseek.com](https://platform.deepseek.com/)
+- Перейдите в раздел **API Keys**
+- Нажмите **Create new key**
+- Скопируйте ключ (начинается с `sk-...`)
+
+### 3. Yandex Cloud (если вы выбрали YandexGPT)
+- В консоли Yandex Cloud перейдите в нужный каталог
+- Запомните **Folder ID** (отображается в верхней части страницы)
+- Получите **IAM-токен**:
+  ```bash
+  yc iam create-token
